@@ -1,0 +1,183 @@
+.hi-icon-wrap {
+	text-align: left;
+	margin: 0 auto;
+}
+
+.hi-icon {
+	display: inline-block;
+	font-size: 0px;
+	cursor: pointer;
+	margin: 7px 15px 7px 30px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	z-index: 1;
+	color: $orange;
+}
+
+.hi-icon:after {
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: '';
+	-webkit-box-sizing: content-box; 
+	-moz-box-sizing: content-box; 
+	box-sizing: content-box;
+}
+
+.hi-icon:before {
+	font-family: 'ecoicon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+}
+
+.hi-icon-mobile:before {
+	content: "\e009";
+}
+
+
+/* Effect 1 */
+.hi-icon-effect-1 .hi-icon {
+	background: rgba(255,255,255,0);
+	border: 2px solid $orange;
+	-webkit-transition: background 0.2s, color 0.2s;
+	-moz-transition: background 0.2s, color 0.2s;
+	transition: background 0.2s, color 0.2s;
+}
+
+.active {
+	background: $orange !important;
+}
+
+.hi-icon-effect-1 .hi-icon:after {
+	top: -4px;
+	left: -4px;
+	padding: 4px;
+	box-shadow: 0 0 0 2px $orange;
+	-webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+	-webkit-transform: scale(.8);
+	-moz-transition: -moz-transform 0.2s, opacity 0.2s;
+	-moz-transform: scale(.8);
+	-ms-transform: scale(.8);
+	transition: transform 0.2s, opacity 0.2s;
+	transform: scale(.5);
+	opacity: 0;
+}
+
+/* Effect 1a */
+.hi-icon-effect-1a .hi-icon:hover {
+	background: $orange;
+	color: #41ab6b;
+}
+
+.hi-icon-effect-1a .hi-icon + span {
+	opacity: 0;
+	color: $dark-magenta;
+	vertical-align: -webkit-baseline-middle;
+	@extend .font--bodycopy;
+	@include transition(all 0.55s ease);
+	padding: 0.4em;
+	background-color: $orange;
+	@include border-radius(5px);
+}
+
+.hi-icon-effect-1a .hi-icon:hover + span {
+	opacity: 1;
+}
+
+.hi-icon-effect-1a .hi-icon:hover:after {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+.spinner {
+	@include modifier(container){
+		display: -webkit-box;   //OLD: Safari,  iOS, Android browser, older WebKit browsers.//
+		display: -moz-box;      // OLD: Firefox (buggy) //
+		display: -ms-flexbox;   // MID: IE 10 //
+		display: -webkit-flex;  // NEW: Chrome 21–28, Safari 6.1+ //
+		display: flex;          // NEW: IE11, Chrome 29+, Opera 12.1+, Firefox 22+ //
+
+		-webkit-box-align: center;
+		-moz-box-align: center;
+		-ms-flex-align: center; 
+		-webkit-align-items: center;
+		align-items: center;
+
+		-webkit-box-pack: center;
+		-moz-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		flex-direction: column;
+		height: 100%;
+	}
+}
+
+.lds-ellipsis {
+	display: inline-block;
+	position: relative;
+	width: 64px;
+	height: 64px;
+}
+.lds-ellipsis div {
+	position: absolute;
+	top: 27px;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: #b41e8e;
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+	left: 6px;
+	animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+	left: 6px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+	left: 26px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+	left: 45px;
+	animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes lds-ellipsis3 {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+@keyframes lds-ellipsis2 {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(19px, 0);
+	}
+}

@@ -1,0 +1,552 @@
+// .test {
+// 	@include keyframes (test) {
+// 		0% {
+// 			transform: translate(0,0);
+// 		}
+
+// 		100% {
+// 			transform: translate (0,-100%);
+// 		}
+// 	}
+// 	@include animate(test, 1s, 1, right);
+// }
+
+@function unfoldTransition ($transition) {
+  // Default values
+  $property: all;
+  $duration: .2s;
+  $easing: null; // Browser default is ease, which is what we want
+  $delay: null; // Browser default is 0, which is what we want
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i)
+    } @else {
+      $p: nth($defaultProperties, $i)
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}
+
+.hide {
+	display: none;
+
+	@include mobile {
+		display: block;
+
+		@include modifier(responsive){
+			display: none;
+		}
+	}
+}
+
+.hide-all {
+	display: none;
+}
+
+.show {
+	display: block !important;
+}
+
+.opacity {
+	@include modifier(1){
+		opacity: 1 !important;
+	}
+	@include modifier(0){
+		opacity: 0;
+	}
+}
+
+.background {
+	&-color{
+		@include modifier(white){
+			background-color: $white;
+			@include modifier("opacity--70"){
+				background-color: rgba(255,255,255,0.7);
+			}
+			@include modifier("responsive--white"){
+				background-color: $white;
+				@include mobile {
+					background-color: $white;
+				}
+			}
+		}
+
+		@include modifier('linear-gradient'){
+			@include linear-gradient-yellow;
+			@include modifier('responsive--linear-gradient'){
+				@include linear-gradient-yellow;
+			}
+		}
+
+		@include modifier('grey--linear-gradient'){
+			@include linear-gradient-grey;
+			@include modifier('responsive--linear-gradient'){
+				@include linear-gradient-grey;
+			}
+		}
+
+		@include modifier(magenta){
+			background-color: $magenta;
+			@include modifier("responsive--white"){
+				background-color: $magenta;
+				@include mobile {
+					background-color: $white;
+				}
+			}
+			@include modifier("responsive--linear-gradient"){
+				background-color: $magenta;
+				@include mobile {
+					@include linear-gradient-yellow;
+				}
+			}
+		}
+		@include modifier('dark-magenta'){
+			background-color: $dark-magenta;
+			@include modifier("responsive--white"){
+				background-color: $dark-magenta;
+				@include mobile {
+					background-color: $white;
+				}
+			}
+			@include modifier("responsive--linear-gradient"){
+				background-color: $dark-magenta;
+				@include mobile {
+					@include linear-gradient-yellow;
+				}
+			}
+		}
+		@include modifier('orange'){
+			background-color: $orange;
+			@include modifier("responsive--white"){
+				background-color: $orange;
+				@include mobile {
+					background-color: $white;
+				}
+			}
+			@include modifier("responsive--linear-gradient"){
+				background-color: $orange;
+				@include mobile {
+					@include linear-gradient-yellow;
+				}
+			}
+		}
+		@include modifier('purple'){
+			background-color: $purple;
+			@include modifier("responsive--white"){
+				background-color: $purple;
+				@include mobile {
+					background-color: $white;
+				}
+			}
+			@include modifier("responsive--linear-gradient"){
+				background-color: $purple;
+				@include mobile {
+					@include linear-gradient-yellow;
+				}
+			}
+		}
+	}
+}
+
+.font-size {
+	@include modifier(1em){
+		font-size: 1em !important;
+	}
+}
+
+.margin {
+	&-bottom {
+		@include modifier(1em){
+			margin-bottom: 1em;
+		}
+		@include modifier('minus-0-2em'){
+			margin-bottom: -0.2em;
+		}
+		@include modifier(2em){
+			margin-bottom: 2em;
+		}
+		@include modifier(10em){
+			margin-bottom: 10em;
+		}
+	}
+	&-top {
+		@include modifier(1em){
+			margin-top: 1em;
+		}
+		@include modifier(5percent){
+			margin-top: 5%;
+		}
+		@include modifier(2em){
+			margin-top: 2em;
+		}
+		@include modifier(10em){
+			margin-top: 10em;
+		}
+	}
+	&-left-right {
+		@include modifier(auto){
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	&-left {
+		@include modifier(1em){
+			margin-left: 1em;
+		}
+		@include modifier('0-5em'){
+			margin-left: 0.5em;
+		}
+		@include modifier(2em){
+			margin-left: 2em;
+		}
+	}
+
+	&-right {
+		@include modifier(1em){
+			margin-right: 1em;
+		}
+	}
+}
+
+.padding {
+
+	&-bottom {
+		@include modifier(1em){
+			padding-bottom: 1em;
+		}
+		@include modifier(5em){
+			padding-bottom: 5em;
+		}
+		@include modifier(2em){
+			padding-bottom: 2em;
+		}
+		@include modifier(3em){
+			padding-bottom: 3em;
+		}
+		@include modifier(10em){
+			padding-bottom: 10em;
+		}
+		@include modifier(20em){
+			padding-bottom: 20em;
+		}
+	}
+	&-top {
+		@include modifier(1em){
+			padding-top: 1em;
+		}
+		@include modifier('0-5em'){
+			padding-top: 0.5em;
+		}
+		@include modifier(2em){
+			padding-top: 2em;
+		}
+		@include modifier(5em){
+			padding-top: 5em;
+		}
+		@include modifier(10){
+			padding-top: 10px;
+		}
+		@include modifier(10em){
+			padding-top: 10em;
+		}
+		@include modifier(3em){
+			padding-top: 3em;
+		}
+	}
+
+	&-left {
+		@include modifier(1em){
+			padding-left: 1em;
+		}
+		@include modifier(12px){
+			padding-left: 12px;
+		}
+	}
+
+	&-right {
+		@include modifier(1em){
+			padding-right: 1em;
+		}
+	}
+	@include modifier("0-5em"){
+		padding:0.5em;
+	}
+	@include modifier(1em){
+		padding: 1em;
+		& p {
+			margin: 1.5em;
+			& strong {
+				color: $magenta;
+			}
+		}
+		& ol li {
+			margin: 1.5em;
+		}
+	}
+	@include modifier(2em){
+		padding: 2em;
+	}
+}
+
+.position {
+	@include modifier (relative){
+		position: relative;
+	}
+	@include modifier(absolute){
+		position: absolute;
+	}
+	@include modifier(fixed){
+		position: fixed;
+	}
+}
+
+.text-align {
+	@include modifier(center){
+		text-align: center;
+	}
+	@include modifier(right){
+		text-align: right;
+	}
+	@include modifier(left){
+		text-align: left;
+	}
+}
+
+.width {
+	@include modifier(100){
+		width: 100%;
+	}
+	@include modifier(80){
+		width: 80%;
+	}
+	@include modifier(99){
+		width: 99%;
+	}
+	@include modifier(95){
+		@include modifier(responsive){
+			@include mobile {
+				width: 95%;
+			}
+		}
+	}
+}
+
+.overflow {
+	@include modifier(hidden){
+		overflow: hidden;
+	}
+}
+
+.display {
+	@include modifier(inline-block){
+		display: inline-block;
+	}
+	@include modifier(none){
+		display: none;
+	}
+	@include modifier(block){
+		display: block;
+	}
+}
+
+.filter {
+	@include modifier(blur){
+		@include css3-prefix("blur", 10px);
+		@include transition(all 1s ease-in);
+	}
+}
+
+.float {
+	@include modifier(left){
+		float: left;
+	}
+	@include modifier(right){
+		float: right;
+	}
+}
+
+.vertical-align {
+	@include modifier(middle){
+		vertical-align: middle;
+	}
+	@include modifier(top){
+		vertical-align: top;
+	}
+}
+
+@include max-width(15);
+@include max-width(30);
+@include max-width(80);
+@include max-width(85);
+@include max-width(100);
+@include max-width(110);
+@include max-width(120);
+
+.left--0 {
+	left: 0;
+}
+
+.right--0 {
+	right: 0;
+}
+
+.rounded {
+	@include modifier(corner){
+		@include border-radius(10px);
+		@include mobile {
+			@include border-radius(0px);
+		}
+		@include modifier(20){
+			@include border-radius(20px);
+		}
+	}
+}
+
+.top {
+	@include modifier("0"){
+		top: 0;
+	}
+	
+}
+
+.home-rounded-box--width {
+	width: calc(100% - 2em);
+	@include mobile {
+		width: 100%;
+	}
+}
+
+.text-transform {
+	@include modifier(uppercase){
+		text-transform: uppercase;
+	}
+	@include modifier(none){
+		text-transform: none;
+	}
+}
+
+.height {
+	@include modifier("100"){
+		height: 100%;
+	}
+	@include modifier("120px"){
+		height: 120px;
+	}
+	@include modifier(auto){
+		height: auto;
+	}
+	
+}
+.mouse {
+	border: 2px solid;
+	width: 30px;
+	height: 46px;
+	@include border-radius(20px);
+	margin-bottom: -13px;
+
+	@include modifier("line") {
+		position: absolute;
+		border-left: 2px solid;
+		content: "";
+		height: 10px;
+		margin-left: 12px;
+		margin-top: 5px;
+	}
+
+	@include modifier(container){
+		@include mobile {
+			display: none;
+		}
+	}
+}
+
+.resize-image {
+	@include modifier("220"){
+		@include mobile {
+			width: 220px;
+		}
+	}
+	@include modifier("300"){
+		@include mobile {
+			width:300px;
+		}
+	}
+}
+
+
+.desktop--hide--responsive--flex {
+	display: none;
+	@include mobile {
+		display: -webkit-box;   //OLD: Safari,  iOS, Android browser, older WebKit browsers.//
+		display: -moz-box;      // OLD: Firefox (buggy) //
+		display: -ms-flexbox;   // MID: IE 10 //
+		display: -webkit-flex;  // NEW: Chrome 21–28, Safari 6.1+ //
+		display: flex;          // NEW: IE11, Chrome 29+, Opera 12.1+, Firefox 22+ //
+
+		-webkit-box-align: center;
+		-moz-box-align: center;
+		-ms-flex-align: center; 
+		-webkit-align-items: center;
+		align-items: center;
+
+		-webkit-box-pack: center;
+		-moz-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+}
+
+.footer__flex {
+	@include flexbox;
+	@include justify-content(space-between);
+	@include align-items(center);
+}
+
+.desktop {
+	@include modifier(hide){
+		display: none;
+		@include mobile {
+			display: block;
+		}
+	}
+}
+
+.responsive {
+	@include modifier(hide) {
+		@include mobile {
+			display: none !important;
+		}
+	}
+}
+
+.linear-gradient {
+	@include linear-gradient-yellow;
+}
+
+.button {
+	text-transform: uppercase;
+	@include border-radius(10px);
+	background: $magenta;
+	color: $white;
+	padding: 1em;
+	
+	&:hover{
+		background: $orange;
+	};
+}
+
+video {
+	border: 2px solid #222222;
+	cursor: pointer;
+	outline: none;
+}

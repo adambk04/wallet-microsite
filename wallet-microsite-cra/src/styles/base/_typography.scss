@@ -1,0 +1,74 @@
+.font {
+	@include modifier(white){
+		color: white;
+	}
+
+	@include modifier(magenta){
+		color: $magenta;
+	}
+
+	@include modifier(dark-magenta){
+		color: $dark-magenta;
+	}
+
+	@include modifier(grey){
+		color: $grey;
+	}
+
+	@include modifier(dark-grey){
+		color: $dark-grey;
+	}
+
+	@include modifier(orange){
+		color: $orange;
+	}
+
+	@include modifier(bodycopy){
+		font: {
+			family: $bodycopy;
+			size: 14px;
+		}
+	}
+
+	&-size {
+		@include modifier(10){
+			font: {
+				size: 10px;
+			}
+		}
+		
+	}
+
+	@include element(menu){
+		font: {
+			family: $bodycopy;
+		}
+		
+		&.responsive {
+			@include mobile {
+				font: {
+					size: 2em;
+				}
+			}
+		}
+	}
+	@include modifier(headline){
+		font: {
+			family: $headline;
+		}
+	}
+}
+
+h1 {
+	font: {
+		family: $headline;
+		size: 40px;
+	}
+}
+
+h2 {
+	font: {
+		family: $headline;
+		size: 30px;
+	}
+}

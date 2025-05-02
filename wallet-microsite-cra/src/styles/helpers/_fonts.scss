@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Gotham Thin';
+  src: url('../fonts/Gotham-Thin.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Gotham-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Gotham-Thin.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/Gotham-Thin.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Gotham-Thin.svg#fonts/Gotham-Thin') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Gotham Rounded';
+  src: url('../fonts/GothamRounded-Medium.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/GothamRounded-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/GothamRounded-Medium.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/GothamRounded-Medium.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/GothamRounded-Medium.svg#fonts/GothamRounded-Medium') format('svg'); /* Legacy iOS */
+}

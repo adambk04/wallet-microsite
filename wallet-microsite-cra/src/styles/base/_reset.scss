@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-stroke: 0.2px rgba(0, 0, 0, 0.1);
+	@include css3-prefix("box-sizing","border-box" );
+}
+
+*:before {
+	@include css3-prefix("box-sizing","border-box" );
+}
+
+*:after {
+	@include css3-prefix("box-sizing","border-box" );
+}
+
+a, button {
+	text-decoration: none;
+	outline: 0 none;
+	@include transition(all 0.55s ease);
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	&:hover {
+		// cursor: pointer;
+		@include transition(all 0.55s ease);
+	}
+}
+
+ol {
+	list-style-position: inside;
+}
+
+html, body {
+	height: 100%;
+	@include animation(fadein, $duration: 2s, $timing-function: cubic-bezier(0.23, 1, 0.32, 1), $fill-mode:forwards);
+	@include mobile{
+		@include animation('', $duration: 2s, $timing-function: cubic-bezier(0.23, 1, 0.32, 1), $fill-mode:forwards);
+	}
+}
+
+html {
+	@include linear-gradient-yellow;
+}
+
+@include keyframes(fadein){
+	0% { opacity: 0;}
+	100% {opacity:1;}
+}

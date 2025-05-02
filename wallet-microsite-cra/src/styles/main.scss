@@ -1,0 +1,21 @@
+// helpers
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "helpers/fonts";
+
+
+// Setting up the css at the start. ie resetting the margins, borders, etc
+@import "base/reset";
+
+// All the fonts go here
+@import "base/typography";
+
+// components
+@import "components/nav";
+
+//layout
+@import "layout/layout";
+
+//vendors
+@import "vendors/component";

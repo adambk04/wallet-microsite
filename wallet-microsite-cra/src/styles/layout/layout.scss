@@ -1,0 +1,98 @@
+footer {
+	position:absolute;
+	bottom:0;
+	width:100%;
+	z-index: 5
+}
+
+header {
+	display: block;
+	position: relative;
+	padding: 1em;
+	z-index: 6;
+
+	img, source {
+		height: 60px;
+      @include mobile {
+         height: 40px;
+      }
+	}
+}
+
+.section--container {
+	position: relative;
+}
+@include fixed-column("right");
+@include fixed-column("left");	
+@include fluid-column("left");
+@include fluid-column("right");
+
+.column--right--fluid--home--aeonmemberplus {
+   max-width:40%;
+   @include mobile {
+      max-width: 90%;
+      display: block;
+      text-align: center;
+      padding-top: 1em;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+
+.column--left--fluid--home--aeonmemberplus {
+   max-width:30%;
+   @include mobile {
+      max-width: 90%;
+      display: block;
+      text-align: center;
+      padding-top: 1em;
+      margin-left: auto;
+      margin-right: auto;
+   }
+}
+
+.flex {
+	display: -webkit-box;   //OLD: Safari,  iOS, Android browser, older WebKit browsers.//
+   display: -moz-box;      // OLD: Firefox (buggy) //
+   display: -ms-flexbox;   // MID: IE 10 //
+   display: -webkit-flex;  // NEW: Chrome 21–28, Safari 6.1+ //
+   display: flex;          // NEW: IE11, Chrome 29+, Opera 12.1+, Firefox 22+ //
+
+   -webkit-box-align: center;
+   -moz-box-align: center;
+   -ms-flex-align: center; 
+   -webkit-align-items: center;
+   align-items: center;
+}
+
+.flex--centralise {
+	display: -webkit-box;   //OLD: Safari,  iOS, Android browser, older WebKit browsers.//
+   display: -moz-box;      // OLD: Firefox (buggy) //
+   display: -ms-flexbox;   // MID: IE 10 //
+   display: -webkit-flex;  // NEW: Chrome 21–28, Safari 6.1+ //
+   display: flex;          // NEW: IE11, Chrome 29+, Opera 12.1+, Firefox 22+ //
+
+   -webkit-box-align: center;
+   -moz-box-align: center;
+   -ms-flex-align: center; 
+   -webkit-align-items: center;
+   align-items: center;
+
+   -webkit-box-pack: center;
+   -moz-box-pack: center;
+   -ms-flex-pack: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+
+   @include mobile {
+      // display: block;
+      flex-direction: column;
+   }
+}
+
+.cny-background-image {
+   background-size: 100% auto;
+   background-image: url('../images/cny_background.png');
+}
+
+
